@@ -7032,4 +7032,29 @@ public class TwoWayView extends AdapterView<ListAdapter> implements
             }
         }
     }
+    
+    public void centerOnPosition(int position) {   
+        if (getChildCount() > 0 && position > 0) {
+            View child=getChildAt(0);
+            int childmeasuredwidth=child.getMeasuredWidth();
+
+            if (childmeasuredwidth > 0) {
+                int whereShouldIScrollTo = (childmeasuredwidth * (2 * position + 1) - getWidth()) / 2;
+
+                int targetposition=whereShouldIScrollTo/childmeasuredwidth;
+                int offset=whereShouldIScrollTo%childmeasuredwidth;
+
+                //Log.e("a","centerOnPosition="+position+" whereShouldIScrollTo="+whereShouldIScrollTo+" target="+targetposition+" offset="+offset);
+
+                setSelectionFromOffset(targetposition, offset);
+            }
+            else {
+                setSelectionFromOffset(position, 0);
+            }
+        }
+        else {
+            setSelectionFromOffset(position, 0);
+        }
+    }
+    
 }
