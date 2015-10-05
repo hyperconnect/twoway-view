@@ -4956,6 +4956,9 @@ public class TwoWayView extends AdapterView<ListAdapter> implements
 
     void fillGap(boolean down) {
         final int childCount = getChildCount();
+        if (childCount == 0) {
+            return;
+        }
 
         if (down) {
             final int start = getStartEdge();
