@@ -1,15 +1,20 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile project(':library')
-    compile 'com.android.support:support-v4:19.0.+'
+android {
+    compileSdkVersion 21
+    buildToolsVersion '21.1.2'
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 21
+    }
 }
 
-android {
-    compileSdkVersion 19
-    buildToolsVersion '19.1.0'
+dependencies {
+    compile project(':library')
+    compile 'com.android.support:support-v4:21.0.0'
 }
